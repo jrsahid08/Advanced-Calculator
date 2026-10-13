@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition</title>
+    <link rel="stylesheet" href="styleaddition.css">
+    <script>
+        function addfun() {
+            // Get input values
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+
+            // Validate input
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById("output2").innerHTML = "⚠️ Please enter valid numbers.";
+                return;
+            }
+
+            // Perform addition
+            let div = num1 / num2;
+
+            // Display output
+            document.getElementById("output2").innerHTML = "Division = " + div;
+        }
+
+    function navigatePage() {
+      const menu = document.getElementById("menu");
+      const page = menu.value;
+      if (page) window.location.href = page;
+    }
+
+    </script>
+</head>
+<body>
+
+<!-- 🧭 FIXED NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="indexmain.html" class="home-btn" title="Go to Home">🏠 Home</a>
+    </div>
+    <div class="nav-right">
+      <select id="menu" onchange="navigatePage()" title="Select a calculator">
+        <option value="">☰ Menu</option>
+        <option value="addition.html">Addition</option>
+        <option value="subtraction.html">Subtraction</option>
+        <option value="multiplication.html">Multiplication</option>
+        <option value="division.html">Division</option>
+        <option value="simpleinterest.html">Simple Interest</option>
+        <option value="compoundinterest.html">Compound Interest</option>
+        <option value="agecalculation.html">Age Calculator</option>
+        <option value="daysconverter.html">Days Converter</option>
+        <option value="profitloss.html">Profit & Loss</option>
+        <option value="percentage.html">Percentage</option>
+        <option value="conversion.html">Conversions</option>
+        <option value="table.html">Multiplication Table</option>
+      </select>
+    </div>
+  </nav>
+
+
+    <div id="main">
+        <div id="box">
+            <div id="box1"><h1>Enter numbers to be Divide</h1></div>
+            <div id="box2"><label>Input:</label> <input type="number" id="num1" placeholder="Enter first number"></div>
+            <div id="box3"><label>Input:</label><input type="number" id="num2" placeholder="Enter second number"></div>
+            <button onclick="addfun()">Result</button>
+        </div>
+
+        <div id="output">
+            <div id="he"><h1>Output</h1></div>
+            <div id="output2"></div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

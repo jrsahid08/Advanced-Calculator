@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compound Interest Calculator</title>
+  <link rel="stylesheet" href="stylecompoundinterest.css">
+</head>
+<body>
+
+  <!-- 🧭 FIXED NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="indexmain.html" class="home-btn" title="Go to Home">🏠Home</a>
+    </div>
+    <div class="nav-right">
+      <select id="menu" onchange="navigatePage()" title="Select a calculator">
+        <option value="">☰menu</option>
+        <option value="addition.html">Addition</option>
+        <option value="subtraction.html">Subtraction</option>
+        <option value="multiplication.html">Multiplication</option>
+        <option value="division.html">Division</option>
+        <option value="simpleinterest.html">Simple Interest</option>
+        <option value="compoundinterest.html">Compound Interest</option>
+        <option value="agecalculation.html">Age Calculator</option>
+        <option value="daysconverter.html">Days Converter</option>
+        <option value="profitloss.html">Profit & Loss</option>
+        <option value="percentage.html">Percentage</option>
+        <option value="conversion.html">Conversions</option>
+        <option value="table.html">Multiplication Table</option>
+      </select>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Compound Interest Calculator</h2>
+
+    <div class="input-group">
+      <label for="principal">Principal Amount (₹):</label>
+      <input type="number" id="principal" placeholder="Enter principal amount">
+    </div>
+
+    <div class="input-group">
+      <label for="rate">Rate of Interest (% per year):</label>                 
+      <input type="number" id="rate" placeholder="Enter interest rate">
+    </div>
+
+    <div class="input-group">
+      <label for="compounding">Compounding Frequency:</label>
+      <select id="compounding">
+        <option value="12">Monthly</option>
+        <option value="4">Quarterly</option>
+        <option value="2">Half-Yearly</option>
+        <option value="1">Yearly</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <label for="time">Time Period:</label>
+      <input type="number" id="time" placeholder="Enter time period">
+      <select id="timeType">
+        <option value="years">Years</option>
+        <option value="months">Months</option>
+      </select>
+    </div>
+
+    <button onclick="calculateCompoundInterest()">Calculate</button>
+
+    <div class="output">
+      <h3>Result</h3>
+      <div id="result" class="result"></div>
+    </div>
+  </div>
+
+  
+
+  <script>
+    function calculateCompoundInterest() {
+      const principal = parseFloat(document.getElementById('principal').value);
+      const rate = parseFloat(document.getElementById('rate').value);
+      const n = parseInt(document.getElementById('compounding').value); // compounding per year
+      const time = parseFloat(document.getElementById('time').value);
+      const timeType = document.getElementById('timeType').value;
+      const result = document.getElementById('result');
+
+      // Input validation
+      if (isNaN(principal) || isNaN(rate) || isNaN(time) || principal <= 0 || rate <= 0 || time <= 0) {
+        result.textContent = "⚠️ Please enter valid positive numbers for all fields.";
+        return;
+      }
+
+      // Convert months to years if needed
+      let timeInYears = timeType === "months" ? time / 12 : time;
+
+      // Compound Interest Formula: A = P(1 + r/n)^(n*t)
+      const r = rate / 100;
+      const amount = principal * Math.pow(1 + r / n, n * timeInYears);
+      const compoundInterest = amount - principal;
+
+      // Interest per year & per month (approximation)
+      const interestPerYear = principal * (Math.pow(1 + r / n, n) - 1);
+      const interestPerMonth = interestPerYear / 12;
+
+      result.innerHTML = `
+        <p>📆 Time Entered: ${time} ${timeType}</p>
+        <p>🔁 Compounding Frequency: ${n === 12 ? "Monthly" : n === 4 ? "Quarterly" : n === 2 ? "Half-Yearly" : "Yearly"}</p>
+        <hr>
+        <p>💸 Interest per Month ≈ ₹${interestPerMonth.toFixed(2)}</p>
+        <p>💰 Interest per Year ≈ ₹${interestPerYear.toFixed(2)}</p>
+        <p>📈 Total Compound Interest = ₹${compoundInterest.toFixed(2)}</p>
+        <p>💵 Total Amount = ₹${amount.toFixed(2)}</p>
+      `;
+    }
+
+    function navigatePage() {
+      const menu = document.getElementById("menu");
+      const page = menu.value;
+      if (page) window.location.href = page;
+    }
+  
+  </script>
+
+</body>
+</html>

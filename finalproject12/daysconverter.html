@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Days to Years, Months & Days Converter</title>
+  <link rel="stylesheet" href="styledaysconverter.css">
+</head>
+<body>
+
+<!-- 🧭 FIXED NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="indexmain.html" class="home-btn" title="Go to Home">🏠 Home</a>
+    </div>
+    <div class="nav-right">
+      <select id="menu" onchange="navigatePage()" title="Select a calculator">
+        <option value="">☰ Menu</option>
+        <option value="addition.html">Addition</option>
+        <option value="subtraction.html">Subtraction</option>
+        <option value="multiplication.html">Multiplication</option>
+        <option value="division.html">Division</option>
+        <option value="simpleinterest.html">Simple Interest</option>
+        <option value="compoundinterest.html">Compound Interest</option>
+        <option value="agecalculation.html">Age Calculator</option>
+        <option value="daysconverter.html">Days Converter</option>
+        <option value="profitloss.html">Profit & Loss</option>
+        <option value="percentage.html">Percentage</option>
+        <option value="conversion.html">Conversions</option>
+        <option value="table.html">Multiplication Table</option>
+      </select>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <h2>Days Converter</h2>
+
+    <div class="input-group">
+      <label for="days">Enter Number of Days:</label>
+      <input type="number" id="days" placeholder="Enter total days">
+    </div>
+
+    <button onclick="convertDays()">Convert</button>
+
+    <div class="output">
+      <h3>Result</h3>
+      <div id="result" class="result"></div>
+    </div>
+  </div>
+
+  
+
+  <script>
+    function convertDays() {
+      const totalDays = parseInt(document.getElementById('days').value);
+      const result = document.getElementById('result');
+
+      if (isNaN(totalDays) || totalDays <= 0) {
+        result.textContent = "⚠️ Please enter a valid positive number of days.";
+        return;
+      }
+
+      // Conversion logic
+      const years = Math.floor(totalDays / 365);
+      const remainingDaysAfterYears = totalDays % 365;
+      const months = Math.floor(remainingDaysAfterYears / 30);
+      const days = remainingDaysAfterYears % 30;
+
+      result.innerHTML = `
+        <p>📅 Total Days Entered: <strong>${totalDays}</strong></p>
+        <hr>
+        <p>🗓️ Years: <strong>${years}</strong></p>
+        <p>📆 Months: <strong>${months}</strong></p>
+        <p>📅 Days: <strong>${days}</strong></p>
+      `;
+    }
+
+    function navigatePage() {
+      const menu = document.getElementById("menu");
+      const page = menu.value;
+      if (page) window.location.href = page;
+    }
+  
+  </script>
+
+</body>
+</html>

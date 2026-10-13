@@ -1,0 +1,225 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* Body styling */
+  body {
+    background: linear-gradient(180deg, #ffd6c9, #ffe3d8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  /* Main container */
+  #main {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  /* Box container */
+  #box {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  #box:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Header section */
+  #box1 {
+    background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+  }
+  
+  /* Input sections */
+  #box2, #box3 {
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 10px 0;
+    color: #2c3e50;
+    font-weight: 600;
+  }
+  
+  input[type="number"] {
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    width: 60%;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+  }
+  
+  input[type="number"]:focus {
+    box-shadow: 0 0 8px rgba(26, 188, 156, 0.6);
+  }
+  
+  /* Button styling */
+  button {
+    margin-top: 10px;
+    padding: 12px 25px;
+    font-size: 18px;
+    color: white;
+    background: linear-gradient(90deg, #1abc9c, #16a085);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  button:hover {
+    background: linear-gradient(90deg, #16a085, #1abc9c);
+    transform: scale(1.05);
+  }
+  
+  /* Output box */
+  #output {
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    width: 100%;
+    text-align: center;
+    color: #2c3e50;
+  }
+  
+  #he {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  #output1, #output2 {
+    background: white;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    font-weight: 600;
+    color: #34495e;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    #main {
+      max-width: 90%;
+    }
+  
+    #box, #output {
+      padding: 15px;
+    }
+  
+    input[type="number"] {
+      width: 80%;
+    }
+  
+    h1 {
+      font-size: 22px;
+    }
+  
+    button {
+      width: 100%;
+      font-size: 16px;
+    }
+  }
+
+  /* 🧭 FIXED NAVIGATION BAR */
+nav {
+  width: 100%;
+  height: 60px;
+  background: #000;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Left Home Button */
+.home-btn {
+  background-color: #7fff00;
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+.home-btn:hover {
+  background-color: #adff2f;
+  transform: scale(1.1);
+}
+
+/* Right Menu Dropdown */
+.nav-right select {
+  background-color: #7fff00;
+  color: black;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.nav-right select:hover {
+  background-color: #adff2f;
+}
+
+
+/* 📱 RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  nav {
+    justify-content: space-between;
+    padding: 0 15px;
+  }
+
+  .home-btn {
+    font-size: 15px;
+    padding: 6px 12px;
+  }
+
+  .nav-right select {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+ 
+
+
+   

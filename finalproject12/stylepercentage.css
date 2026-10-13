@@ -1,0 +1,204 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #ffd6c9, #ffe3d8);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  width: 90%;
+  max-width: 500px;
+}
+
+.box {
+  background: linear-gradient(180deg, #ffd6c9, #ffe3d8);
+  border-radius: 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  padding: 25px;
+  text-align: center;
+  width: 100%;
+}
+
+h1 {
+  background-color: #ffb6c1;
+  color: #333;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 22px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.input-section {
+  background: #bbdefb;
+  margin: 15px 0;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  font-weight: bold;
+  color: #333;
+  margin-right: 10px;
+}
+
+input {
+  padding: 8px;
+  width: 70%;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  font-size: 15px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  background-color: #00b894;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #019875;
+  transform: scale(1.03);
+}
+
+.output-box {
+  background: linear-gradient(180deg, #f3e5f5, #bbdefb);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  text-align: center;
+}
+
+.output-box h2 {
+  color: #2d3436;
+  margin-top: 0;
+  background: #f8bbd0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#result {
+  background: #ffffffb3;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 16px;
+  color: #2d3436;
+  font-weight: 500;
+  margin-top: 10px;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .main {
+    width: 95%;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  input {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  #result {
+    font-size: 15px;
+  }
+}
+
+/* 🧭 FIXED NAVIGATION BAR */
+nav {
+  width: 100%;
+  height: 60px;
+  background: #000;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Left Home Button */
+.home-btn {
+  background-color: #7fff00;
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+.home-btn:hover {
+  background-color: #adff2f;
+  transform: scale(1.1);
+}
+
+/* Right Menu Dropdown */
+.nav-right select {
+  background-color: #7fff00;
+  color: black;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.nav-right select:hover {
+  background-color: #adff2f;
+}
+
+
+/* 📱 RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  nav {
+    justify-content: space-between;
+    padding: 0 15px;
+  }
+
+  .home-btn {
+    font-size: 15px;
+    padding: 6px 12px;
+  }
+
+  .nav-right select {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

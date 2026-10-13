@@ -1,0 +1,257 @@
+/* Body setup */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #ffd6c9, #ffe3d8);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Add overlay for readability */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(4px);
+  z-index: 0;
+}
+
+/* Main container */
+.container {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, #ffe0b2, #ffccbc);
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 400px;
+  max-width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+}
+
+/* Title */
+h2 {
+  background-color: #ffb6c1;
+  padding: 10px;
+  border-radius: 10px;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 22px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Input group */
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: #333;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  outline: none;
+  font-size: 15px;
+}
+
+/* Button styling */
+button {
+  background-color: #00b894;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #019875;
+  transform: scale(1.03);
+}
+
+/* Output box */
+.output {
+  margin-top: 25px;
+  background: linear-gradient(135deg, #f3e5f5, #bbdefb);
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.output h3 {
+  margin: 0 0 10px 0;
+}
+
+.result {
+  font-size: 18px;
+  color: #2d3436;
+  font-weight: bold;
+  text-align: left;
+  line-height: 1.6;
+}
+
+/* ✅ Responsive design for tablets and mobiles */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 25px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+    height: auto;
+  }
+
+  .container {
+    width: 100%;
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  input[type="number"] {
+    font-size: 14px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .result {
+    font-size: 16px;
+  }
+}
+
+/* 🧭 FIXED NAVIGATION BAR */
+nav {
+  width: 100%;
+  height: 60px;
+  background: #000;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Left Home Button */
+.home-btn {
+  background-color: #7fff00;
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+.home-btn:hover {
+  background-color: #adff2f;
+  transform: scale(1.1);
+}
+
+/* Right Menu Dropdown */
+.nav-right select {
+  background-color: #7fff00;
+  color: black;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.nav-right select:hover {
+  background-color: #adff2f;
+}
+
+
+/* 📱 RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  nav {
+    justify-content: space-between;
+    padding: 0 15px;
+  }
+
+  .home-btn {
+    font-size: 15px;
+    padding: 6px 12px;
+  }
+
+  .nav-right select {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ⚖️ FOOTER */
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 15px 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 50px;
+  font-size: 14px;
+}
+
+footer strong {
+  color: #7fff00;
+}

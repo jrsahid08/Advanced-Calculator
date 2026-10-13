@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Length & Time Converter</title>
+  <link rel="stylesheet" href="styleconversion.css">
+</head>
+<body>
+
+  <!-- 🧭 FIXED NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="indexmain.html" class="home-btn" title="Go to Home">🏠 Home</a>
+    </div>
+    <div class="nav-right">
+      <select id="menu" onchange="navigatePage()" title="Select a calculator">
+        <option value="">☰ Menu</option>
+        <option value="addition.html">Addition</option>
+        <option value="subtraction.html">Subtraction</option>
+        <option value="multiplication.html">Multiplication</option>
+        <option value="division.html">Division</option>
+        <option value="simpleinterest.html">Simple Interest</option>
+        <option value="compoundinterest.html">Compound Interest</option>
+        <option value="agecalculation.html">Age Calculator</option>
+        <option value="daysconverter.html">Days Converter</option>
+        <option value="profitloss.html">Profit & Loss</option>
+        <option value="percentage.html">Percentage</option>
+        <option value="conversion.html">Conversions</option>
+        <option value="table.html">Multiplication Table</option>
+      </select>
+    </div>
+  </nav>
+
+
+  <div class="main-row">
+    <!-- Length Converter -->
+    <div class="box">
+      <h1>Length Converter</h1>
+
+      <div class="input-section">
+        <label>Enter Value:</label>
+        <input type="number" id="lengthValue" placeholder="e.g. 10">
+      </div>
+
+      <div class="input-section">
+        <label>From:</label>
+        <select id="lengthFrom">
+          <option value="mm">Millimeters (mm)</option>
+          <option value="cm">Centimeters (cm)</option>
+          <option value="m">Meters (m)</option>
+          <option value="km">Kilometers (km)</option>
+          <option value="inch">Inches (in)</option>
+          <option value="ft">Feet (ft)</option>
+          <option value="yd">Yards (yd)</option>
+          <option value="mile">Miles (mi)</option>
+        </select>
+      </div>
+
+      <div class="input-section">
+        <label>To:</label>
+        <select id="lengthTo">
+          <option value="mm">Millimeters (mm)</option>
+          <option value="cm">Centimeters (cm)</option>
+          <option value="m">Meters (m)</option>
+          <option value="km">Kilometers (km)</option>
+          <option value="inch">Inches (in)</option>
+          <option value="ft">Feet (ft)</option>
+          <option value="yd">Yards (yd)</option>
+          <option value="mile">Miles (mi)</option>
+        </select>
+      </div>
+
+      <button onclick="convertLength()">Convert Length</button>
+
+      <div class="output-box">
+        <h2>Output</h2>
+        <p id="lengthResult"></p>
+      </div>
+    </div>
+
+    <!-- Time Converter -->
+    <div class="box">
+      <h1>Time Converter</h1>
+
+      <div class="input-section">
+        <label>Enter Value:</label>
+        <input type="number" id="timeValue" placeholder="e.g. 3600">
+      </div>
+
+      <div class="input-section">
+        <label>From:</label>
+        <select id="timeFrom">
+          <option value="sec">Seconds</option>
+          <option value="min">Minutes</option>
+          <option value="hr">Hours</option>
+          <option value="day">Days</option>
+          <option value="week">Weeks</option>
+          <option value="month">Months (30 days)</option>
+          <option value="year">Years (365 days)</option>
+        </select>
+      </div>
+
+      <div class="input-section">
+        <label>To:</label>
+        <select id="timeTo">
+          <option value="sec">Seconds</option>
+          <option value="min">Minutes</option>
+          <option value="hr">Hours</option>
+          <option value="day">Days</option>
+          <option value="week">Weeks</option>
+          <option value="month">Months (30 days)</option>
+          <option value="year">Years (365 days)</option>
+        </select>
+      </div>
+
+      <button onclick="convertTime()">Convert Time</button>
+
+      <div class="output-box">
+        <h2>Output</h2>
+        <p id="timeResult"></p>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <script>
+    // ---------- LENGTH CONVERSION ----------
+    function convertLength() {
+      const value = parseFloat(document.getElementById("lengthValue").value);
+      const from = document.getElementById("lengthFrom").value;
+      const to = document.getElementById("lengthTo").value;
+      const result = document.getElementById("lengthResult");
+
+      if (isNaN(value)) {
+        result.innerHTML = "⚠️ Please enter a valid number.";
+        return;
+      }
+
+      const lengthInMeters = {
+        mm: 0.001,
+        cm: 0.01,
+        m: 1,
+        km: 1000,
+        inch: 0.0254,
+        ft: 0.3048,
+        yd: 0.9144,
+        mile: 1609.34
+      };
+
+      const meters = value * lengthInMeters[from];
+      const converted = meters / lengthInMeters[to];
+
+      result.innerHTML = `
+        <b>Entered Value:</b> ${value} ${from}<br>
+        <b>Converted Value:</b> ${converted.toFixed(6)} ${to}
+      `;
+    }
+
+    // ---------- TIME CONVERSION ----------
+    function convertTime() {
+      const value = parseFloat(document.getElementById("timeValue").value);
+      const from = document.getElementById("timeFrom").value;
+      const to = document.getElementById("timeTo").value;
+      const result = document.getElementById("timeResult");
+
+      if (isNaN(value)) {
+        result.innerHTML = "⚠️ Please enter a valid number.";
+        return;
+      }
+
+      const timeInSeconds = {
+        sec: 1,
+        min: 60,
+        hr: 3600,
+        day: 86400,
+        week: 604800,
+        month: 2592000, // 30 days
+        year: 31536000  // 365 days
+      };
+
+      const seconds = value * timeInSeconds[from];
+      const converted = seconds / timeInSeconds[to];
+
+      result.innerHTML = `
+        <b>Entered Value:</b> ${value} ${from}<br>
+        <b>Converted Value:</b> ${converted.toFixed(6)} ${to}
+      `;
+    }
+
+  
+    function navigatePage() {
+      const menu = document.getElementById("menu");
+      const page = menu.value;
+      if (page) window.location.href = page;
+    }
+
+  </script>
+
+</body>
+</html>

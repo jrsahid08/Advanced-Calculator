@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Calculators | Utility Hub</title>
+  <link rel="stylesheet" href="styleindex.css">
+</head>
+<body>
+
+  <!-- 🧭 FIXED NAVBAR -->
+  <nav> 
+    <div class="nav-left">
+      <a href="indexmain.html" class="home-btn" title="Go to Home">🏠 Home</a>
+    </div>
+    <div class="nav-right">
+      <select id="menu" onchange="navigatePage()" title="Select a calculator">
+        <option value="">☰ Menu</option>
+        <option value="addition.html">Addition</option>
+        <option value="subtraction.html">Subtraction</option>
+        <option value="multiplication.html">Multiplication</option>
+        <option value="division.html">Division</option>
+        <option value="simpleinterest.html">Simple Interest</option>
+        <option value="compoundinterest.html">Compound Interest</option>
+        <option value="agecalculation.html">Age Calculator</option>
+        <option value="daysconverter.html">Days Converter</option>
+        <option value="profitloss.html">Profit & Loss</option>
+        <option value="percentage.html">Percentage</option>
+        <option value="conversion.html">Conversions</option>
+        <option value="table.html">Multiplication Table</option>
+      </select>
+    </div>
+  </nav>
+
+  <!-- 🌈 MAIN CONTENT -->
+  <div class="container">
+
+    <!-- Simple Calculations -->
+    <section class="section-box">
+      <h1>🧮 Simple Calculations</h1>
+      <div class="grid">
+        <a href="addition.html">Addition</a>
+        <a href="subtraction.html">Subtraction</a>
+        <a href="multiplication.html">Multiplication</a>
+        <a href="division.html">Division</a>
+      </div>
+    </section>
+
+    <!-- Interest Calculations -->
+    <section class="section-box">
+      <h1>💰 Interest Calculations</h1>
+      <div class="grid">
+        <a href="simpleinterest.html">Simple Interest</a>
+        <a href="compoundinterest.html">Compound Interest</a>
+      </div>
+    </section>
+
+    <!-- Age and Days Converter -->
+    <section class="section-box">
+      <h1>📅 Age and Days Converter</h1>
+      <div class="grid">
+        <a href="agecalculation.html">Age Calculator</a>
+        <a href="daysconverter.html">Days Converter</a>
+      </div>
+    </section>
+
+    <!-- Profit, Loss, and Percentage -->
+    <section class="section-box">
+      <h1>📊 Profit, Loss, and Percentage</h1>
+      <div class="grid">
+        <a href="profitloss.html">Profit & Loss</a>
+        <a href="percentage.html">Percentage</a>
+      </div>
+    </section>
+
+    <!-- Tables and Conversions -->
+    <section class="section-box">
+      <h1>📘 Tables and Conversions</h1>
+      <div class="grid">
+        <a href="table.html">Multiplication Table</a>
+        <a href="conversion.html">Conversions</a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ⚖️ FOOTER -->
+  <footer>
+    <p>© 2025 Math & Utility Calculator Hub | All Rights Reserved</p>
+    <p>Designed with 💚 by <strong>MD Sahid</strong></p>
+  </footer>
+
+  <script>
+    function navigatePage() {
+      const menu = document.getElementById("menu");
+      const page = menu.value;
+      if (page) window.location.href = page;
+    }
+  </script>
+
+</body>
+</html>

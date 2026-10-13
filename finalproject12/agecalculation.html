@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="styleagecalculation.css">
+</head>
+<body>
+
+    <!-- 🧭 FIXED NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="indexmain.html" class="home-btn" title="Go to Home">🏠 Home</a>
+    </div>
+    <div class="nav-right">
+      <select id="menu" onchange="navigatePage()" title="Select a calculator">
+        <option value="">☰ Menu</option>
+        <option value="addition.html">Addition</option>
+        <option value="subtraction.html">Subtraction</option>
+        <option value="multiplication.html">Multiplication</option>
+        <option value="division.html">Division</option>
+        <option value="simpleinterest.html">Simple Interest</option>
+        <option value="compoundinterest.html">Compound Interest</option>
+        <option value="agecalculation.html">Age Calculator</option>
+        <option value="daysconverter.html">Days Converter</option>
+        <option value="profitloss.html">Profit & Loss</option>
+        <option value="percentage.html">Percentage</option>
+        <option value="conversion.html">Conversions</option>
+        <option value="table.html">Multiplication Table</option>
+      </select>
+    </div>
+  </nav>
+
+    <div class="container">
+        <h2>Enter Your Date of Birth</h2>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob">
+        <br>
+        <button onclick="calculateAge()">Result</button>
+
+        <div class="output">
+            <h3>Output</h3>
+            <div id="result" class="result"></div>
+        </div>
+    </div>
+
+    
+
+    <script>
+        function calculateAge() {
+            const dob = document.getElementById("dob").value;
+            const result = document.getElementById("result");
+
+            if (!dob) {
+                result.textContent = "⚠️ Please select your date of birth.";
+                return;
+            }
+
+            const birthDate = new Date(dob);
+            const today = new Date();
+
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            const dayDiff = today.getDate() - birthDate.getDate();
+
+            if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                age--;
+            }
+
+            result.textContent = `🎂 Your age is ${age} years old.`;
+        }
+    function navigatePage() {
+      const menu = document.getElementById("menu");
+      const page = menu.value;
+      if (page) window.location.href = page;
+    }
+    </script>
+
+</body>
+</html>

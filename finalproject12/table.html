@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiplication Table Generator</title>
+  <link rel="stylesheet" href="styletable.css">
+</head>
+<body>
+
+  <!-- 🧭 FIXED NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="indexmain.html" class="home-btn" title="Go to Home">🏠 Home</a>
+    </div>
+    <div class="nav-right">
+      <select id="menu" onchange="navigatePage()" title="Select a calculator">
+        <option value="">☰ Menu</option>
+        <option value="addition.html">Addition</option>
+        <option value="subtraction.html">Subtraction</option>
+        <option value="multiplication.html">Multiplication</option>
+        <option value="division.html">Division</option>
+        <option value="simpleinterest.html">Simple Interest</option>
+        <option value="compoundinterest.html">Compound Interest</option>
+        <option value="agecalculation.html">Age Calculator</option>
+        <option value="daysconverter.html">Days Converter</option>
+        <option value="profitloss.html">Profit & Loss</option>
+        <option value="percentage.html">Percentage</option>
+        <option value="conversion.html">Conversions</option>
+        <option value="table.html">Multiplication Table</option>
+      </select>
+    </div>
+  </nav>
+
+  <div class="main">
+    <div class="box">
+      <h1>Multiplication Table Generator</h1>
+
+      <div class="input-section">
+        <label>Enter a Number:</label>
+        <input type="number" id="number" placeholder="e.g. 7">
+      </div>
+
+      <div class="input-section">
+        <label>How many multiples?</label>
+        <input type="number" id="limit" placeholder="e.g. 10">
+      </div>
+
+      <button onclick="generateTable()">Generate Table</button>
+    </div>
+
+    <div class="output-box">
+      <h2>Output</h2>
+      <div id="result"></div>
+    </div>
+  </div>
+
+  <script>
+    function generateTable() {
+      const num = parseInt(document.getElementById("number").value);
+      const limit = parseInt(document.getElementById("limit").value);
+      const resultDiv = document.getElementById("result");
+
+      if (isNaN(num) || isNaN(limit) || num <= 0 || limit <= 0) {
+        resultDiv.innerHTML = "⚠️ Please enter valid positive numbers.";
+        return;
+      }
+
+      let tableHTML = `<b>Multiplication Table of ${num} (up to ${limit})</b><br><br>`;
+      for (let i = 1; i <= limit; i++) {
+        tableHTML += `${num} × ${i} = ${num * i}<br>`;
+      }
+
+      resultDiv.innerHTML = tableHTML;
+    }
+
+    function navigatePage() {
+      const menu = document.getElementById("menu");
+      const page = menu.value;
+      if (page) window.location.href = page;
+    }
+    
+  </script>
+
+</body>
+</html>

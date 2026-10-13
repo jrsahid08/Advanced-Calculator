@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Simple Interest Calculator</title>
+  <link rel="stylesheet" href="stylesimpleinterest.css">
+</head>
+<body>
+
+
+  <!-- 🧭 FIXED NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="indexmain.html" class="home-btn" title="Go to Home">🏠 Home</a>
+    </div>
+    <div class="nav-right">
+      <select id="menu" onchange="navigatePage()" title="Select a calculator">
+        <option value="">☰ Menu</option>
+        <option value="addition.html">Addition</option>
+        <option value="subtraction.html">Subtraction</option>
+        <option value="multiplication.html">Multiplication</option>
+        <option value="division.html">Division</option>
+        <option value="simpleinterest.html">Simple Interest</option>
+        <option value="compoundinterest.html">Compound Interest</option>
+        <option value="agecalculation.html">Age Calculator</option>
+        <option value="daysconverter.html">Days Converter</option>
+        <option value="profitloss.html">Profit & Loss</option>
+        <option value="percentage.html">Percentage</option>
+        <option value="conversion.html">Conversions</option>
+        <option value="table.html">Multiplication Table</option>
+      </select>
+    </div>
+  </nav>
+  
+
+  <div class="container">
+    <h2>Simple Interest Calculator</h2>
+
+    <div class="input-group">
+      <label for="principal">Principal Amount (₹):</label>
+      <input type="number" id="principal" placeholder="Enter principal amount">
+    </div>
+
+    <div class="input-group">
+      <label for="rate">Rate of Interest (% per year):</label>
+      <input type="number" id="rate" placeholder="Enter interest rate">
+    </div>
+
+    <div class="input-group">
+      <label for="time">Time Period:</label>
+      <input type="number" id="time" placeholder="Enter time period">
+      <select id="timeType">
+        <option value="years">Years</option>
+        <option value="months">Months</option>
+      </select>
+    </div>
+
+    <button onclick="calculateInterest()">Calculate</button>
+
+    <div class="output">
+      <h3>Result</h3>
+      <div id="result" class="result"></div>
+    </div>
+  </div>
+
+  
+
+  <script>
+    function calculateInterest() {
+      const principal = parseFloat(document.getElementById('principal').value);
+      const rate = parseFloat(document.getElementById('rate').value);
+      const time = parseFloat(document.getElementById('time').value);
+      const timeType = document.getElementById('timeType').value;
+      const result = document.getElementById('result');
+
+      // Validate inputs
+      if (isNaN(principal) || isNaN(rate) || isNaN(time) || principal <= 0 || rate <= 0 || time <= 0) {
+        result.textContent = "⚠️ Please enter valid positive numbers for all fields.";
+        return;
+      }
+
+      // Convert months to years if needed
+      let timeInYears = timeType === "months" ? time / 12 : time;
+
+      // Simple Interest Formula
+      const simpleInterest = (principal * rate * timeInYears) / 100;
+      const totalAmount = principal + simpleInterest;
+
+      // Interest per year & per month
+      const interestPerYear = (principal * rate * 1) / 100;
+      const interestPerMonth = interestPerYear / 12;
+
+      // Output results
+      result.innerHTML = `
+        <p>📆 Time Entered: ${time} ${timeType}</p>
+        <hr>
+        <p>💸 Interest per Month = ₹${interestPerMonth.toFixed(2)}</p>
+        <p>💰 Interest per Year = ₹${interestPerYear.toFixed(2)}</p>
+        <p>📈 Total Interest amount = ₹${simpleInterest.toFixed(2)}</p>
+        <p>💵 Total Amount  = ₹${totalAmount.toFixed(2)}</p>
+      `;
+    }
+
+    function navigatePage() {
+      const menu = document.getElementById("menu");
+      const page = menu.value;
+      if (page) window.location.href = page;
+    }
+    
+  </script>
+
+</body>
+</html>

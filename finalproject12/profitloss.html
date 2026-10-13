@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profit & Loss Calculator</title>
+  <link rel="stylesheet" href="styleprofitloss.css">
+</head>
+<body>
+
+
+  <!-- 🧭 FIXED NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="indexmain.html" class="home-btn" title="Go to Home">🏠 Home</a>
+    </div>
+    <div class="nav-right">
+      <select id="menu" onchange="navigatePage()" title="Select a calculator">
+        <option value="">☰ Menu</option>
+        <option value="addition.html">Addition</option>
+        <option value="subtraction.html">Subtraction</option>
+        <option value="multiplication.html">Multiplication</option>
+        <option value="division.html">Division</option>
+        <option value="simpleinterest.html">Simple Interest</option>
+        <option value="compoundinterest.html">Compound Interest</option>
+        <option value="agecalculation.html">Age Calculator</option>
+        <option value="daysconverter.html">Days Converter</option>
+        <option value="profitloss.html">Profit & Loss</option>
+        <option value="percentage.html">Percentage</option>
+        <option value="conversion.html">Conversions</option>
+        <option value="table.html">Multiplication Table</option>
+      </select>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Profit & Loss Calculator</h2>
+
+    <div class="input-group">
+      <label for="costPrice">Buying Price (₹):</label>
+      <input type="number" id="costPrice" placeholder="Enter buying price">
+    </div>
+
+    <div class="input-group">
+      <label for="sellingPrice">Selling Price (₹):</label>
+      <input type="number" id="sellingPrice" placeholder="Enter selling price">
+    </div>
+
+    <button onclick="calculateProfitLoss()">Calculate</button>
+
+    <div class="output">
+      <h3>Result</h3>
+      <div id="result" class="result"></div>
+    </div>
+  </div>
+  
+
+  <script>
+    function calculateProfitLoss() {
+      const costPrice = parseFloat(document.getElementById('costPrice').value);
+      const sellingPrice = parseFloat(document.getElementById('sellingPrice').value);
+      const result = document.getElementById('result');
+
+      if (isNaN(costPrice) || isNaN(sellingPrice) || costPrice <= 0 || sellingPrice <= 0) {
+        result.textContent = "⚠️ Please enter valid positive numbers for both prices.";
+        return;
+      }
+
+      let message = "";
+      let profitOrLoss = 0;
+      let percentage = 0;
+
+      if (sellingPrice > costPrice) {
+        // Profit
+        profitOrLoss = sellingPrice - costPrice;
+        percentage = (profitOrLoss / costPrice) * 100;
+        message = `
+          <p>💰 Buying Price: ₹${costPrice.toFixed(2)}</p>
+          <p>💵 Selling Price: ₹${sellingPrice.toFixed(2)}</p>
+          <hr>
+          <p>🎉 <strong>Profit:</strong> ₹${profitOrLoss.toFixed(2)}</p>
+          <p>📈 <strong>Profit Percentage:</strong> ${percentage.toFixed(2)}%</p>
+        `;
+      } else if (costPrice > sellingPrice) {
+        // Loss
+        profitOrLoss = costPrice - sellingPrice;
+        percentage = (profitOrLoss / costPrice) * 100;
+        message = `
+          <p>💰 Buying Price: ₹${costPrice.toFixed(2)}</p>
+          <p>💵 Selling Price: ₹${sellingPrice.toFixed(2)}</p>
+          <hr>
+          <p>😞 <strong>Loss:</strong> ₹${profitOrLoss.toFixed(2)}</p>
+          <p>📉 <strong>Loss Percentage:</strong> ${percentage.toFixed(2)}%</p>
+        `;
+      } else {
+        message = `
+          <p>💰 Buying Price: ₹${costPrice.toFixed(2)}</p>
+          <p>💵 Selling Price: ₹${sellingPrice.toFixed(2)}</p>
+          <hr>
+          <p>😐 No Profit, No Loss.</p>
+        `;
+      }
+
+      result.innerHTML = message;
+    }
+
+    function navigatePage() {
+      const menu = document.getElementById("menu");
+      const page = menu.value;
+      if (page) window.location.href = page;
+    }
+    
+  </script>
+
+</body>
+</html>
